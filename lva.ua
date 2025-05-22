@@ -1,5 +1,7 @@
-~ "cfa.ua" ~ CFA
 ~ "ir.ua" ~ AExpr BExpr Frag
+~ "cfa.ua" ~ CFA
+~ "dfa.ua" ~ Run‼!
+
 Reads ← |1 (
   ⍣({°AExpr~Variable}
   | {}◌°AExpr~Constant
@@ -36,16 +38,7 @@ PhiEdge ← (
   ⍜°□◴⍣(PhiSkip|PhiAssign|PhiAssume|PhiIO)
 )
 
-Run ← (
-  ⊙⊙CFA~Reverse
-  ⊃(CFA~Edges⋅⋅∘|map⟜≡(□{}◌)CFA~Vertices⋅⋅∘|⊙⊙CFA~Edges)
-  ⍢(⊃(PhiEdge ⟜(getCFA~Edge~Source)⊙⋅⊙⊙∘|CFA~Edge~Dest ⊙⊙⊙⊙∘)°⊂
-    ◡(¬∧×:1≡˜∊⊙¤⊙get⊙⊙⋅∘)
-    ⨬(◌◌
-    | ⊃(◴⊂⊃(▽⊸(=⊙≡CFA~Edge~Source)⊙⋅∘|⋅⊙◌)⋅⊙⊙⋅⋅⋅∘
-      | ⍜get⍜∩°□(◴⊂)⊃⋅⊙⋅∘⊙⋅⋅◌
-      | ⋅⋅⋅⋅⊙⊙∘)
-    )
-  | ±⧻)
-  ⋅⊙⋅⋅◌
-)
+Compare ← ∧×:1≡˜∊⊙¤
+Join    ← ⍜∩°□(◴⊂)
+
+Run ← Run‼!(PhiEdge|Compare|Join)⊙⊙CFA~Reverse
