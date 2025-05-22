@@ -1,6 +1,6 @@
 ~ "ir.ua" ~ AExpr BExpr Frag
 ~ "cfa.ua" ~ CFA
-~ "dfa.ua" ~ Run‼!
+~ "dfa.ua" ~ Run‼‼
 
 Reads ← |1 (
   ⍣({°AExpr~Variable}
@@ -40,5 +40,6 @@ PhiEdge ← (
 
 Compare ← ∧×:1≡˜∊⊙¤
 Join    ← ⍜∩°□(◴⊂)
+Iota    ← map⟜≡(□{}◌)CFA~Vertices
 
-Run ← Run‼!(PhiEdge|Compare|Join)⊙⊙CFA~Reverse
+Run ← Run‼‼(PhiEdge|Iota|Compare|Join)⊙⊙CFA~Reverse
